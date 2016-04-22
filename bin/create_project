@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+import projecture
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument('project',
+                    type = str,
+                    help = 'project name with path')
+
+parser.add_argument('--author_name',
+                    type = str,
+                    default = 'author_name',
+                    help = 'author name')
+
+parser.add_argument('--author_email',
+                    type = str,
+                    default = 'author_email',
+                    help = 'author email')
+
+parser.add_argument('--about',
+                    type = str,
+                    default = 'short description of project',
+                    help = 'short description of project')
+
+args = parser.parse_args()
+
+projecture.create_project(project = args.project,
+                          author_name = args.author_name,
+                          author_email = args.author_email,
+                          about = args.about)
