@@ -1,8 +1,13 @@
 #!/usr/bin/env python
-
+#----------------------------------------------------------------------
+# create_project.py
+# calls projecture's create_project to generate project scaffolding
+# Author: Gaurav Verma (diszgaurav at gmail com)
+#----------------------------------------------------------------------
 import projecture
 import argparse
 
+#----------------------------------------------------------------------
 parser = argparse.ArgumentParser()
 
 parser.add_argument('project',
