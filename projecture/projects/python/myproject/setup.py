@@ -11,7 +11,7 @@ setup(name='myproject',
       description='myproject:about',
       long_description=long_description,
       classifiers=[
-          'Development Status :: 2 - Pre-Alpha',
+          'Development Status :: 1 - Planning',
           'License :: OSI Approved :: MIT License',
           'Programming Language :: Python :: 2.7',
           'Topic :: Software Development',
