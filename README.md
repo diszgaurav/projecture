@@ -1,5 +1,24 @@
 # projecture
-scaffolding/bootstrap generation tool
+Projecture is a project scaffolding(or a minimal bootstrap) generation tool for various projects (see list of supported project types below). Correctly structuring your project (i.e. some defined standard way or a way which is more acceptable to the related community) makes things easy for you, for contributors and for your users. 
 
-Supported project types:
+## List of supported project types:
 - python
+
+# Installation
+
+    pip install projecture
+
+# Usages
+
+projecture installation creates a create_project executable in your path. Create a new project from command line as:
+
+    create_project pyproject --author_name "your name" --author_email "your email" --about "project generated from projecture"
+
+or from python:
+
+```python
+import projecture
+projecture.create_project('pyproject', author_name='your name', author_email='your_email', about='project generated from projecture')
+```
+
+This will create pyproject dir in your current working dir.
