@@ -22,7 +22,9 @@ setup(name='myproject',
       author_email='myproject:author_email',
       license='MIT',
       packages=['myproject'],
+      entry_points = {
+          'console_scripts': [],
+      },
       tests_require=['pytest'],
-      scripts=[],
       include_package_data=True,
       zip_safe=False)

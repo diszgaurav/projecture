@@ -28,7 +28,7 @@ class ProjectsCollection(object):
             self.__supported_projects.append(prj)
 
 
-    def create_project(self, project='myproject',
+    def create_project(self, project,
                        project_type='python',
                        author_name='author_name',
                        author_email='author_email',

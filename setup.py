@@ -24,6 +24,8 @@ setup(name='projecture',
       license='MIT',
       packages=['projecture'],
       tests_require=['pytest'],
-      scripts=['bin/create_project.py'],
+      entry_points = {
+          'console_scripts': ['create_project=projecture.cmdline:main'],
+      },
       include_package_data=True,
       zip_safe=False)
