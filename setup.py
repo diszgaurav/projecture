@@ -25,7 +25,7 @@ setup(name='projecture',
       packages=['projecture'],
       tests_require=['pytest'],
       entry_points = {
-          'console_scripts': ['create_project=projecture.cmdline:main'],
+          'console_scripts': ['projecture_create=projecture.cmdline:main'],
       },
       include_package_data=True,
       zip_safe=False)

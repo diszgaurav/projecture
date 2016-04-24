@@ -22,12 +22,12 @@ Installation
 Usages
 ======
 
-projecture installation creates a create\_project executable in your
+projecture installation creates a projecture\_create executable in your
 path. Create a new project from command line as:
 
 .. code:: bash
 
-    create_project pyproject --author_name "your name" --author_email "your email" --about "project generated from projecture"
+    projecture_create pyproject --author_name "your name" --author_email "your email" --about "project generated from projecture"
 
 or from python:
 
