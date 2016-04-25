@@ -20,24 +20,33 @@ def main(cmdline_args=None):
                         type = str,
                         help = 'project name with path')
 
-    parser.add_argument('--author_name',
+    parser.add_argument('-n',
+                        '--author_name',
                         type = str,
                         default = 'author_name',
                         help = 'author name')
 
-    parser.add_argument('--author_email',
+    parser.add_argument('-e',
+                        '--author_email',
                         type = str,
                         default = 'author_email',
                         help = 'author email')
 
-    parser.add_argument('--about',
+    parser.add_argument('-a',
+                        '--about',
                         type = str,
                         default = 'short description of project',
                         help = 'short description of project')
+
+    parser.add_argument('-f',
+                        '--force',
+                        action = 'store_true',
+                        help = 'overwrite an existing project')
 
     args = parser.parse_args(cmdline_args)
 
     create_project(args.project,
                    author_name = args.author_name,
                    author_email = args.author_email,
-                   about = args.about)
+                   about = args.about,
+                   force = args.force)

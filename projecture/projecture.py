@@ -32,7 +32,8 @@ class ProjectsCollection(object):
                        project_type='python',
                        author_name='author_name',
                        author_email='author_email',
-                       about='short description of project'):
+                       about='short description of project',
+                       force=False):
         """create bootstrap project structure for specified language
 
         :returns: execution status
@@ -49,28 +50,34 @@ class ProjectsCollection(object):
         project_src = os.path.join(project_src, 'myproject')
 
         if os.path.exists(project_dst):
-            shutil.rmtree(project_dst)
+            if not force:
+                msg = 'Project {} already exists. Use -f or --force to overwrite it'.format(project)
+                logging.info(msg)
+                print msg
+                return 0
+            else:
+                shutil.rmtree(project_dst)
+
         shutil.copytree(project_src, project_dst, symlinks=True)
 
-        if project_name != 'myproject':
-            logging.debug('renaming dirs/files')
-            # need to walk twice!
-            for i in range(2):
-                for root, dirs, files in os.walk(project_dst):
-                    for f in dirs if i else files:
-                        f_old = os.path.join(root, f)
-                        # file content
-                        if not i:
-                            for line in fileinput.input(files=f_old, inplace=True):
-                                line = re.sub('myproject:author_name', author_name.title(), line)
-                                line = re.sub('myproject:author_email', author_email, line)
-                                line = re.sub('myproject:year', time.strftime('%Y'), line)
-                                line = re.sub('myproject:about', about, line)
-                                line = re.sub('myproject', project_name, line)
-                                print line.rstrip()
-                        # file names
-                        f_new = os.path.join(root, re.sub('myproject', project_name, f))
-                        os.rename(f_old, f_new)
+        logging.debug('renaming dirs/files')
+        # need to walk twice!
+        for i in range(2):
+            for root, dirs, files in os.walk(project_dst):
+                for f in dirs if i else files:
+                    f_old = os.path.join(root, f)
+                    # file content
+                    if not i:
+                        for line in fileinput.input(files=f_old, inplace=True):
+                            line = re.sub('myproject:author_name', author_name.title(), line)
+                            line = re.sub('myproject:author_email', author_email, line)
+                            line = re.sub('myproject:year', time.strftime('%Y'), line)
+                            line = re.sub('myproject:about', about, line)
+                            line = re.sub('myproject', project_name, line)
+                            print line.rstrip()
+                    # file names
+                    f_new = os.path.join(root, re.sub('myproject', project_name, f))
+                    os.rename(f_old, f_new)
 
         logging.info('{} project created for {}'.format(project_name, project_type))
         print '{} project created for {}'.format(project_name, project_type)
