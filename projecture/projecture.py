@@ -42,7 +42,10 @@ class ProjectsCollection(object):
         """
 
         if project_type not in self.__supported_projects:
-            raise Exception, 'project for {} not supported!'.format(project_type)
+            msg = 'project for "{}" not supported!'.format(project_type)
+            logging.error(msg)
+            print msg
+            return 1
 
         project_dst, project_name = self.__get_project_path_name(project)
 
@@ -51,7 +54,7 @@ class ProjectsCollection(object):
 
         if os.path.exists(project_dst):
             if not force:
-                msg = 'Project {} already exists. Use -f or --force to overwrite it'.format(project)
+                msg = 'Project "{}" already exists. Use -f or --force to overwrite it'.format(project)
                 logging.info(msg)
                 print msg
                 return 0
@@ -79,8 +82,9 @@ class ProjectsCollection(object):
                     f_new = os.path.join(root, re.sub('myproject', project_name, f))
                     os.rename(f_old, f_new)
 
-        logging.info('{} project created for {}'.format(project_name, project_type))
-        print '{} project created for {}'.format(project_name, project_type)
+        exit_msg = '"{}" project created for {}'.format(project_name, project_type)
+        logging.info(exit_msg)
+        print exit_msg
 
         return 0
 

@@ -17,36 +17,43 @@ def main(cmdline_args=None):
     parser = argparse.ArgumentParser()
 
     parser.add_argument('project',
-                        type = str,
-                        help = 'project name with path')
+                        type=str,
+                        help='project name with path')
+
+    parser.add_argument('-t',
+                        '--project_type',
+                        type=str,
+                        default='python',
+                        help='type')
 
     parser.add_argument('-n',
                         '--author_name',
-                        type = str,
-                        default = 'author_name',
-                        help = 'author name')
+                        type=str,
+                        default='author_name',
+                        help='author name')
 
     parser.add_argument('-e',
                         '--author_email',
-                        type = str,
-                        default = 'author_email',
-                        help = 'author email')
+                        type=str,
+                        default='author_email',
+                        help='author email')
 
     parser.add_argument('-a',
                         '--about',
-                        type = str,
-                        default = 'short description of project',
-                        help = 'short description of project')
+                        type=str,
+                        default='short description of project',
+                        help='short description of project')
 
     parser.add_argument('-f',
                         '--force',
-                        action = 'store_true',
-                        help = 'overwrite an existing project')
+                        action='store_true',
+                        help='overwrite an existing project')
 
     args = parser.parse_args(cmdline_args)
 
     create_project(args.project,
-                   author_name = args.author_name,
-                   author_email = args.author_email,
-                   about = args.about,
-                   force = args.force)
+                   project_type=args.project_type,
+                   author_name=args.author_name,
+                   author_email=args.author_email,
+                   about=args.about,
+                   force=args.force)
