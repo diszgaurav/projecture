@@ -23,7 +23,7 @@ setup(name='myproject',
       license='MIT',
       packages=['myproject'],
       entry_points = {
-          'console_scripts': [],
+          'console_scripts': ['myproject_main=myproject.cmdline:main'],
       },
       tests_require=['pytest'],
       include_package_data=True,
