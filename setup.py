@@ -11,7 +11,7 @@ setup(name='projecture',
       description='scaffolding/bootstrap generation tool',
       long_description=long_description,
       classifiers=[
-          'Development Status :: 2 - Pre-Alpha',
+          'Development Status :: 3 - Alpha',
           'License :: OSI Approved :: MIT License',
           'Programming Language :: Python :: 2.7',
           'Topic :: Software Development',
